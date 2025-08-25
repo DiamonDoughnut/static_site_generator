@@ -12,8 +12,25 @@ def markdown_to_blocks(text):
 
 def block_to_block_type(text):
     if text[0] == "#":
-        if text[1] == " ":
-            return BlockType.HEADING
+        if text[1] == "#":
+            if text[2] == "#":
+                if text[3] == "#":
+                    if text[4] == "#":
+                        if text[5] == "#" and text[6] == " ":
+                            return BlockType.HEADING6
+                        elif text[5] == " ":
+                            return BlockType.HEADING5
+                    elif text[4] == " ":
+                        return BlockType.HEADING4
+                elif text[3] == " ":
+                    return BlockType.HEADING3
+            elif text[12] == " ":
+                return BlockType.HEADING2
+        elif text[1] == " ":
+            return BlockType.HEADING1
+    else:
+        return BlockType.PARAGRAPH        
+
     if text[:3] == "```" and text[-3:] == "```":
         return BlockType.CODE
     if text[0] == ">":
