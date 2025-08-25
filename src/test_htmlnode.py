@@ -2,7 +2,7 @@ import unittest
 
 from htmlnode import *
 from textnode import *
-from main import *
+from enums import TextType
 
 class TestHtmlNode(unittest.TestCase):
     def test_eq(self):
