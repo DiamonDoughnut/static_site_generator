@@ -1,4 +1,7 @@
 from enums import BlockType
+from nodedelimiter import text_to_text_node
+from textnode import *
+from htmlnode import *
 
 def markdown_to_blocks(text):
     result = []
@@ -35,4 +38,21 @@ def block_to_block_type(text):
                 return BlockType.PARAGRAPH
             next += 1             
         return BlockType.OLIST    
-    return BlockType.PARAGRAPH    
+    return BlockType.PARAGRAPH  
+
+def markdown_to_html_node(text):
+    blocked_md = markdown_to_blocks(text)
+    final_list = []
+    for block in blocked_md:
+        block_type = block_to_block_type(block)
+        if block_type is not BlockType.CODE:
+            children = text_to_text_node(block)
+            node = ParentNode(tag=block_type.value, children=children)
+            final_list.append(node)
+        else:
+            child_node = TextNode(block, TextType.PARAGRAPH)
+            child = text_node_to_html_node(child_node)
+            node = ParentNode(tag=block_type.value, children=[child])
+            final_list.append(node)
+    grandparent_node = ParentNode(tag="div", children=final_list)
+    return grandparent_node            

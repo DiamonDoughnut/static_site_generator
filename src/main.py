@@ -11,12 +11,14 @@ This is a paragraph of text. It has some **bold** and _italic_ words inside of i
 """
 
 def main():
-    blocks = markdown_to_blocks(md)
-    print(blocks)
-    types = []
-    for block in blocks:
-        types.append(block_to_block_type(block))
-    print(types)    
+    test = markdown_to_html_node(md)
+    print(f"top_level: {test.tag}")
+    for node in test.children:
+        print(f"second_level: {node.tag}")
+        if node.children:
+            for node_down in node.children:
+                print(f"third_level: {node.tag}")
+    
 
 
 

@@ -1,17 +1,17 @@
 from enum import Enum
 
 class TextType(Enum):
-    TEXT="text"
-    BOLD="bold"
-    ITALIC="italic"
+    TEXT="p"
+    BOLD="b"
+    ITALIC="i"
     CODE="code"
-    LINK="link"
-    IMAGE="image"
+    LINK="a"
+    IMAGE="img"
 
 class BlockType(Enum):
-    PARAGRAPH="paragraph"
-    HEADING="heading"
+    PARAGRAPH="p"
+    HEADING="h1"
     CODE="code"
     QUOTE="quote"
-    ULIST="unordered_list"
-    OLIST="ordered_list"    
+    ULIST="ul"
+    OLIST="ol"    
