@@ -1,5 +1,3 @@
-import unittest
-
 from textnode import TextNode
 from enums import TextType
 
